@@ -10,6 +10,7 @@ Useful for spotting cost regressions when changing squashfs compression, kernel 
 
 | When             | Version    | Kernel(s)                  | Squashfs       | Duration | ISO size | Notes                                    |
 |------------------|------------|----------------------------|----------------|----------|----------|------------------------------------------|
+| 2026-11-07 13:16 | v26.11.07 | linux linux-lts | zstd L3 -b 1M | 10m10s | 6.6G | |
 | 2026-11-07 09:07 | v26.11.07 | linux linux-lts | zstd L3 -b 1M | 8m24s | 6.6G | |
 | 2026-11-05 07:25 | v26.11.05 | linux linux-lts | zstd L3 -b 1M | 9m31s | 6.6G | |
 | 2026-11-03 11:02 | v26.11.03 | linux linux-lts | zstd L3 -b 1M | 8m28s | 6.6G | |
@@ -147,6 +148,7 @@ Useful for spotting cost regressions when changing squashfs compression, kernel 
 
 | When             | ISO        | Target            | Duration | mkinitcpio passes | Notes                                       |
 |------------------|------------|-------------------|----------|---------------------|---------------------------------------------|
+| 2026-11-07 16:47 | v26.11.07 | metal-A | 3m37s | 2 | v26.11.07 13:07 build, NVIDIA entry (`driver=nonfree`) on real metal (i7-7700K, RTX 2060, SATA SSD). UEFI, systemd-boot, erase disk, ext4, zram. 42 jobs, none failed. Timed from Calamares.log. kiro-audit 131 PASS / 0 WARN / 0 FAIL |
 | 2026-10-25 06:26 | v26.10.25 | metal-B | 4m06s | 2 | Production v26.10.25 script build, release dry run on real metal (i7-7700K, HD 630, SATA SSD). UEFI, systemd-boot, erase disk, ext4 + swapfile, zram. 42 jobs, all exit 0. Timed from Calamares.log. kiro-audit 131 PASS / 0 WARN / 0 FAIL |
 | 2026-10-24 12:28 | v26.10.24 | vm | 4m29s | 2 | Production v26.10.24 script build, VB VM live session. UEFI, systemd-boot, erase disk, btrfs (@ subvolumes) + swap partition, zram. 43 jobs, completion succeeded. Timed from live session.log. kiro-audit 132 PASS / 0 WARN / 0 FAIL |
 | 2026-10-18 12:31 | v26.10.18 | vm | 2m36s | 2 | VB VM, production KIB build (i3 + xfce, lean selection), default ext4, UEFI |

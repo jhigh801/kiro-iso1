@@ -6,6 +6,30 @@ Results of boot and install testing for kiro-iso builds. Newest first.
 
 ---
 
+## 2026-11-07 (build 13:07) — v26.11.07, **`linux` + `linux-lts`**, bare metal **UEFI / systemd-boot** (metal-A, NVIDIA RTX 2060): **test build, NVIDIA entry**, **kiro-audit 131 / 0 / 0**
+
+The second v26.11.07 build, the first ISO without `beautyline`, `candy-icons-git` and the two Numix icon themes,
+installed from the **NVIDIA (`driver=nonfree`) boot entry** on metal-A (i7-7700K, Intel iGPU not in use,
+**GeForce RTX 2060 (TU106)** driving two 1080p monitors on HDMI + DVI-D).
+
+| Target (metal-A) | FS / encryption | Bootloader | Result |
+|------------------|-----------------|------------|--------|
+| Kiro default (XFCE, X11), entry 2 `driver=nonfree`, Belgian keyboard | erase disk, ext4, no swap partition (zram 8 GB), unencrypted | UEFI / systemd-boot | Clean install in 3m37s (42 jobs, none failed, 2 mkinitcpio passes); **kiro-audit 131 PASS / 0 WARN / 0 FAIL**, zero failed units (system + user), boot 22.7 s (4.0 s userspace) |
+
+- `kiro_remove_nvidia` kept the NVIDIA packages (`driver=nonfree`) and chwd skipped as designed. `nvidia-open-dkms`
+  615.78.08 built for `7.2.14-arch1-1` and `6.18.60-1-lts`; nouveau not loaded and no nouveau udev rule left.
+  1466 packages installed.
+- Xorg on the NVIDIA driver, both monitors at 1920x1080 side by side; OpenGL `NVIDIA GeForce RTX 2060` with direct
+  rendering.
+- Today's icon clean-up holds on a real install: `surfn-kiro-icons-git` and `neo-candy-icons-git` installed, no
+  `beautyline`, `candy-icons-git`, `numix-*` or `resources` package.
+- `journalctl -b -p err`: the same as on 2026-10-28: the `drm_sysfs_connector_property_event` kernel `WARNING` from
+  `nvidia-modeset` once at boot (display unaffected), the RTX 2060's USB-C controller (`ucsi_ccg` i2c timeout) and
+  USB enumeration errors on port 1-1 (`error -71`, a USB device on that port, not Kiro).
+- Kiro Atelier was installed on top afterwards; its Setup page detects the card, the driver and 6 GB video memory.
+
+---
+
 ## 2026-10-28 (build 05:52) — v26.11.01, **`linux` + `linux-lts`**, bare metal **BIOS / GRUB** (Medion, legacy NVIDIA Optimus laptop, entry 1 `driver=free`): **release candidate**, **kiro-audit 131 / 2 / 0**
 
 The same November build on the oldest box: a 2011 Sandy Bridge Optimus laptop booting **legacy BIOS**, the only

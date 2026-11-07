@@ -15,6 +15,8 @@
 
 - **`numix-icon-theme-git` and `numix-circle-icon-theme-git` removed from the ISO.** They were only fallbacks for **Surfn Kiro**, the default icon theme. Surfn Kiro now carries the icons it borrowed from them itself: the 1,027 app names Numix Circle gave it (as links to Surfn's own art) and the 381 status, emblem, category, device, action and file-type names that went blank on a test install without Numix (Numix's own drawings, so nothing changes on screen). This works in XFCE, ohmychadwm and Plasma alike, and saves about 85 MB on the ISO. Same change in kiro-iso and kiro-iso-next on the same day (Erik's call). ATT will offer Numix for plain Surfn, which still falls back on it.
 
+- **v26.11.07 (13:07 build) tested on real NVIDIA hardware.** A clean install from the NVIDIA boot entry on an RTX 2060 desktop: no failed jobs or units, kiro-audit 131 / 0 / 0, and the icon packages dropped today are really gone from the installed system. Recorded in DISTRO_TESTING.md and the BUILD_TIMES.md installs table.
+
 ### Technical Details
 - `packages.x86_64`: dropped the `resources` line. Same change in kiro-iso and kiro-iso-next on the same day. ATT's `data/streamline_packages.txt` (the Streamline page, generated from this TIER 3 list by `gen-streamline-list.py` in ATT's `up.sh`) drops `resources` on ATT's next push.
 - `packages.x86_64` (TIER 2, icons block): dropped the `beautyline` and `candy-icons-git` lines. ATT does not install them. They need **neo-candy-icons-git r66 or newer**: there `Inherits=` names `or-beautyline-garuda` instead of `BeautyLine` / `candy-icons`, and the PKGBUILD no longer lists them as optdepends.
@@ -22,6 +24,8 @@
 
 ### Files Modified
 - `archiso/packages.x86_64`
+- `BUILD_TIMES.md`
+- `DISTRO_TESTING.md`
 - `CHANGELOG.md`
 
 ## 2026.11.06
